@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 //controllers
 const ControllerCPF = require('./src/controllers/ControllerCPF.js');
-
+const ControllerCNPJ = require('./src/controllers/ControllerCNPJ.js');
 
 const PORT = process.env.PORT || 9002
 
@@ -35,6 +35,23 @@ app.get('/validarCpf/:cpf', async (req, res) => {
 app.get('/gerarCpf', async (req, res) => {
     try {
         ControllerCPF.GerarCPF()
+    } catch (err) {
+        throw err;
+    }
+})
+
+app.get('/validarCnpj/:cnpj', async (req, res) => {
+    try{
+        const {cnpj} = req.params;
+        ControllerCNPJ.ValidarCNPJ(cnpj)
+    } catch (err) {
+        throw err;
+    }
+})
+
+app.get('/gerarCnpj', async (req, res) => {
+    try{
+        ControllerCNPJ.GerarCNPJ()
     } catch (err) {
         throw err;
     }
