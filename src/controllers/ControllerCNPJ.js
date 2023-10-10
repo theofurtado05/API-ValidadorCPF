@@ -4,7 +4,7 @@ class ControllerCNPJ {
     async ValidarCNPJ (cnpj){
         try{
             const response = await DaoCNPJ.ValidarCNPJ(cnpj)
-            console.log(response)
+            
             return response
         } catch (err) {
             throw err;
@@ -14,7 +14,7 @@ class ControllerCNPJ {
     async GerarCNPJ (){
         try{
             const response = await DaoCNPJ.GerarCNPJ()
-            console.log(response)
+            
             return response
         } catch (err) {
             throw err;
