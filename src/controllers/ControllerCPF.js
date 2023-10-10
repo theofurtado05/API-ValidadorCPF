@@ -4,8 +4,10 @@ class ControllerCPF {
     async ValidarCPF (cpf) {
         try {
             const response = await DaoCPF.ValidarCPF(cpf);
-            return response
-
+            return {
+                "valid": response,
+                "message": response ? 'O CPF é valido' : 'O CPF é invalido'
+            }
         } catch (err) {
             console.log(err);
             throw err;
@@ -15,7 +17,6 @@ class ControllerCPF {
     async GerarCPF () {
         try{
             const response = await DaoCPF.GerarCPF();
-            
             return response
         } catch (err) {
             throw err;

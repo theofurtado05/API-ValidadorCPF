@@ -24,14 +24,25 @@ app.listen(PORT, () => {
 
 app.get('/validarCpf/:cpf', async (req, res) => {
         const {cpf} = req.params;
-        ControllerCPF.ValidarCPF(cpf)    
+        const response = await ControllerCPF.ValidarCPF(cpf)    
+        
+        res.json(response)
 })
 
-app.get('/gerarCpf', async (req, res) => ControllerCPF.GerarCPF())
+app.get('/gerarCpf', async (req, res) => {
+    const response = await ControllerCPF.GerarCPF()
+    res.json(response)
+
+})
 
 app.get('/validarCnpj/:cnpj', async (req, res) => {
         const {cnpj} = req.params;
-        ControllerCNPJ.ValidarCNPJ(cnpj)
+        const response = await ControllerCNPJ.ValidarCNPJ(cnpj)
+        res.json(response)
 })
 
-app.get('/gerarCnpj', async (req, res) => ControllerCNPJ.GerarCNPJ())
+app.get('/gerarCnpj', async (req, res) => {
+   const response = await ControllerCNPJ.GerarCNPJ()
+   res.json(response)
+
+})

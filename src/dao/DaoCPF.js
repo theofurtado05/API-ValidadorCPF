@@ -2,7 +2,7 @@ class DaoCPF {
 
     async ValidarCPF (cpf) {
         // Remova todos os caracteres que não sejam dígitos
-        
+
         cpf = cpf.replace(/\D/g, '');
     
         // Verifique se o CPF possui 11 dígitos
@@ -58,8 +58,12 @@ class DaoCPF {
 
         // Monte o CPF completo
         const cpfCompleto = cpfParcial + primeiroDigito + segundoDigito;
+        const cpfFormatado = cpfCompleto.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
 
-        return cpfCompleto;
+        return {
+            "cpf": cpfCompleto,
+            "cpf_formatado": cpfFormatado
+        }
     }
 }
 

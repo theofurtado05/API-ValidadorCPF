@@ -4,8 +4,10 @@ class ControllerCNPJ {
     async ValidarCNPJ (cnpj){
         try{
             const response = await DaoCNPJ.ValidarCNPJ(cnpj)
-            
-            return response
+            return {
+                "valid": response,
+                "message": response ? 'O CNPJ é valido.' : 'O CNPJ é invalido.',
+            }
         } catch (err) {
             throw err;
         }
@@ -14,7 +16,6 @@ class ControllerCNPJ {
     async GerarCNPJ (){
         try{
             const response = await DaoCNPJ.GerarCNPJ()
-            
             return response
         } catch (err) {
             throw err;
