@@ -4,7 +4,6 @@ class ControllerCPF {
     async ValidarCPF (cpf) {
         try {
             const response = await DaoCPF.ValidarCPF(cpf);
-            
             return response
 
         } catch (err) {

@@ -23,36 +23,15 @@ app.listen(PORT, () => {
 
 
 app.get('/validarCpf/:cpf', async (req, res) => {
-    try {
         const {cpf} = req.params;
-        ControllerCPF.ValidarCPF(cpf)
-    } catch (err) {
-        throw err;
-    }
-    
+        ControllerCPF.ValidarCPF(cpf)    
 })
 
-app.get('/gerarCpf', async (req, res) => {
-    try {
-        ControllerCPF.GerarCPF()
-    } catch (err) {
-        throw err;
-    }
-})
+app.get('/gerarCpf', async (req, res) => ControllerCPF.GerarCPF())
 
 app.get('/validarCnpj/:cnpj', async (req, res) => {
-    try{
         const {cnpj} = req.params;
         ControllerCNPJ.ValidarCNPJ(cnpj)
-    } catch (err) {
-        throw err;
-    }
 })
 
-app.get('/gerarCnpj', async (req, res) => {
-    try{
-        ControllerCNPJ.GerarCNPJ()
-    } catch (err) {
-        throw err;
-    }
-})
+app.get('/gerarCnpj', async (req, res) => ControllerCNPJ.GerarCNPJ())
